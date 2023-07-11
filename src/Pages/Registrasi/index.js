@@ -16,7 +16,7 @@ function PageContent_Register({ onLogin, onSwitchToLogin }) {
     } else {
       e.preventDefault();
       try {
-        await axios.post("http://localhost:5000/users", {
+        await axios.post("https://backend-rouge-five.vercel.app/users", {
           name,
           email,
           password,

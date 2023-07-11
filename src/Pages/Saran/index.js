@@ -15,7 +15,7 @@ const CommentList = () => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/comments');
+      const response = await axios.get('https://backend-rouge-five.vercel.app/comments');
       setComments(response.data);
     } catch (error) {
       console.log(error);
@@ -27,14 +27,14 @@ const CommentList = () => {
 
     try {
       if (editMode) {
-        await axios.patch(`http://localhost:5000/comments/${editCommentId}`, {
+        await axios.patch(`https://backend-rouge-five.vercel.app/comments/${editCommentId}`, {
           name,
           comment,
         });
         setEditMode(false);
         setEditCommentId('');
       } else {
-        const response = await axios.post('http://localhost:5000/comments', {
+        const response = await axios.post('https://backend-rouge-five.vercel.app/comments', {
           name,
           comment,
         });
@@ -49,7 +49,7 @@ const CommentList = () => {
 
   const handleEdit = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:5000/comments/${id}`);
+      const response = await axios.get(`https://backend-rouge-five.vercel.app/comments/${id}`);
       const { name, comment } = response.data;
       setName(name);
       setComment(comment);
@@ -69,7 +69,7 @@ const CommentList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/comments/${id}`);
+      await axios.delete(`https://backend-rouge-five.vercel.app/comments/${id}`);
       setComments(comments.filter((comment) => comment._id !== id));
     } catch (error) {
       console.log(error);
